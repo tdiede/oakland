@@ -9,7 +9,7 @@ const height = 1000;
 let projection = d3.geoMercator()
    .center([ -122.25, 37.75 ])
    .translate([ width/2, height/2 ])
-   .scale([ width*50 ]);
+   .scale([ width*200 ]);
 
 let path = d3.geoPath()
     .projection(projection);
@@ -43,7 +43,7 @@ svg.append('text')
     .attr('dy', +50)
     .style('text-anchor', 'left');
 
-d3.json("data/ZillowNeighborhoods-CA.geojson", function(err, json) {
+d3.json("data/ZillowNeighborhoods-Oakland.geojson", function(err, json) {
     if (err) {
         throw err;
     }
@@ -72,17 +72,8 @@ d3.json("data/ZillowNeighborhoods-CA.geojson", function(err, json) {
                         .style("fill", "AAA");
 
                 }
-
-
             });
-
-
-
         });
-
-
-
-
     });
 
     function reporter(x) {
@@ -91,8 +82,6 @@ d3.json("data/ZillowNeighborhoods-CA.geojson", function(err, json) {
             return x.properties.Name;
         });
     }
-
-
 
 });
 
