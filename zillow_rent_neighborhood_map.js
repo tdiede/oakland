@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 (function() {
 
@@ -7,9 +7,10 @@ const height = 1000;
 
 
 let projection = d3.geoMercator()
-   .center([ -122.25, 37.75 ])
+   .center([ -122.23, 37.76 ])
    .translate([ width/2, height/2 ])
-   .scale([ width*200 ]);
+   .scale([ width*150 ])
+   .rotate([0, 0, 0]);
 
 let path = d3.geoPath()
     .projection(projection);
@@ -43,15 +44,13 @@ svg.append('text')
     .attr('dy', +50)
     .style('text-anchor', 'left');
 
-d3.json("data/ZillowNeighborhoods-Oakland.geojson", function(err, json) {
-    if (err) {
-        throw err;
-    }
+d3.json("data/ZillowNeighborhoods-Oakland.geojson", function (err, json) {
+    if (err) throw err;
 
     console.log(json);
     var oakland = json.features;
 
-    d3.csv("data/OaklandNeighborhood_Zri_SingleFamilyResidenceRental.csv", function(err, data) {
+    d3.csv("data/OaklandNeighborhood_Zri_SingleFamilyResidenceRental.csv", function (err, data) {
 
         data.forEach(function (d, i) {
             oakland.forEach(function (neighborhood, j) {
